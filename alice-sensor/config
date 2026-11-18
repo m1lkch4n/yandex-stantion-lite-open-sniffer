@@ -1,0 +1,24 @@
+# alice-sensor config
+# USB-flash mount point (if available, logs go here instead of /bkupgrade)
+USB_MOUNT=/tmp/usb/Ventoy
+USB_DIR=alice-sensor
+
+# Scan intervals
+WIFI_EVERY=90      # seconds between Wi-Fi scans
+BLE_EVERY=180      # seconds between BLE scans
+LAN_EVERY=300      # seconds between LAN sweeps
+
+# BLE settings
+BLE_SCAN_SEC=8     # duration of each BLE scan
+
+# LAN settings
+PING_PARALLEL=32   # parallel pings per batch
+LAN_PREFIX=        # auto-detect from wlan0; set explicitly if needed (e.g. 192.168.0.)
+
+# Retention
+LOG_MAX_DAYS=3     # delete records older than this (days)
+LOG_KEEP=500       # per-BSSID history limit (not yet used)
+
+# Timeouts
+SCAN_TIMEOUT=30    # kill Wi-Fi scan if it takes longer
+PING_HOST=192.168.1.1  # host for connectivity check

@@ -1,0 +1,30 @@
+#!/bin/sh
+# alice-sensor init script
+
+DAEMON=/opt/alice-sensor/sensor.sh
+PIDFILE=/var/run/alice-sensor.pid
+
+case "$1" in
+start)
+    [ -x "$DAEMON" ] || exit 0
+    if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+        exit 0
+    fi
+    "$DAEMON" >/dev/null 2>&1 &
+    echo $! > "$PIDFILE"
+    ;;
+stop)
+    [ -f "$PIDFILE" ] && kill "$(cat "$PIDFILE")" 2>/dev/null
+    rm -f "$PIDFILE"
+    ;;
+restart)
+    "$0" stop
+    sleep 1
+    "$0" start
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;
+esac
+exit 0

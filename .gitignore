@@ -1,0 +1,23 @@
+# binary firmware and driver (proprietary)
+*.bin
+*.ko
+
+# kernel tree (too large, build with Docker)
+kmod/linux-4.9.337/
+
+# Docker image
+*.tar
+
+# build artifacts
+*.o
+*.mod
+*.order
+*.symvers
+Module.symvers
+modules.order
+.config
+
+# temp
+*.pyc
+*.log
+/tmp/
